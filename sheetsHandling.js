@@ -18,7 +18,7 @@ addSheetBtn.addEventListener("click", (e) => {
 
     // DB
     createSheetDB();
-    //createGraphComponentMatrix();
+    createGraphComponentMatrix();
     handleSheetActiveness(sheet);
     handleSheetRemoval(sheet);
     sheet.click();
@@ -47,7 +47,7 @@ function handleSheetRemoval(sheet) {
 
         // By default DB to sheet 1 (active)
         sheetDB = collectedSheetDB[0];
-        // graphComponentMatrix = collectedGraphComponent[0];
+        graphComponentMatrix = collectedGraphComponent[0];
         handleSheetProperties();
     })
 }
@@ -67,7 +67,7 @@ function handleSheetUIRemoval(sheet) {
 
 function handleSheetDB(sheetIdx) {
     sheetDB = collectedSheetDB[sheetIdx];
-    // graphComponentMatrix = collectedGraphComponent[sheetIdx];
+    graphComponentMatrix = collectedGraphComponent[sheetIdx];
 }
 
 function handleSheetProperties() {
@@ -125,15 +125,15 @@ function createSheetDB() {
     collectedSheetDB.push(sheetDB);
 }
 
-// function createGraphComponentMatrix() {
-//     let graphComponentMatrix = [];
-//     for (let i = 0; i < rows; i++) {
-//         let row = [];
-//         for (let j = 0; j < cols; j++) {
-//             // Why array -> More than 1 child relation(dependency)
-//             row.push([]);
-//         }
-//         graphComponentMatrix.push(row);
-//     }
-//     collectedGraphComponent.push(graphComponentMatrix);
-// }
+function createGraphComponentMatrix() {
+    let graphComponentMatrix = [];
+    for (let i = 0; i < rows; i++) {
+        let row = [];
+        for (let j = 0; j < cols; j++) {
+            // Why array -> More than 1 child relation(dependency)
+            row.push([]);
+        }
+        graphComponentMatrix.push(row);
+    }
+    collectedGraphComponent.push(graphComponentMatrix);
+}
